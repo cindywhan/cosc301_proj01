@@ -5,7 +5,6 @@
 
 // Names: Cindy Han & Jung Hyun (Catherine) Seo
 /* your list function definitions */
-/* your list function definitions */
 
 void insert_node (const int n, struct node **head){
 	struct node *new = malloc(sizeof(struct node));
@@ -41,6 +40,13 @@ void insert_node (const int n, struct node **head){
 			copy = copy->next;
 		}
 		
+	}
+}
+
+void print_list (struct node **head){
+	while (head != NULL){
+		printf ("%d\n", head->value);
+		head = head->next;
 	}
 }
 
