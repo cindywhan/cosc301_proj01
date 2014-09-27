@@ -1,7 +1,8 @@
 /*
- *
- * author name(s), date, and other info here
- *
+ * Project 1
+ * Cindy Han & Jung Hyun (Cathrine) Seo
+ * Fall 2014
+ * COSC 301
  */
 
 #include <stdio.h>
@@ -12,12 +13,22 @@
 
 #include "list.h"
 
+
+
 void process_data(FILE *input_file) {
     // !! your code should start here.  the input_file parameter
     // is an already-open file.  you can read data from it using
     // the fgets() C library function.  close it with the fclose()
     // built-in function
-
+	char string[100];
+	while(!feof(input_file)){
+		// get the line of code 
+		fgets(string, 100, input_file);
+		if (fgets(string,100, input_file)){
+			printf("%s\n", string);
+		}
+	}
+	// loop through the file
 
 
 
