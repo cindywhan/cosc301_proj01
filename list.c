@@ -5,10 +5,52 @@
 
 // Names: Cindy Han & Jung Hyun (Catherine) Seo
 /* your list function definitions */
+<<<<<<< HEAD
 struct node {
 	int value;
 	struct node *next;
 }
+=======
+/* your list function definitions */
+
+void insert_node (const int n, struct node **head){
+	struct node *new = malloc(sizeof(struct node));
+	new->value = n
+	new->next = NULL;
+	struct node *copy = *head;
+	
+	if (*head == NULL){
+		*head = new;
+	}
+	
+	else if ((*head)->next == NULL){
+		if ((*head)->value < n){
+			(*head)->next = new;
+		}
+		else{
+			(*new)->next = head;
+			*head = new;
+		}
+	}
+	else{
+		while ((*copy)->next != NULL){
+			if (n < (*copy)->value){
+				(*new)->next = copy;
+				*copy = new;
+				break;
+			}
+			else if (n >= (*copy)->value && i <= (*copy)->next->value){
+				new->next = copy->next;
+				copy->next = new;
+				break;
+			}
+			copy = copy->next;
+		}
+		
+	}
+}
+
+>>>>>>> fcef03d6d683b9ea347b47f43d05299ea214cf75
 
 void free_mem(struct node** head){
 	// free all the malloced memory 
