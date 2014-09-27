@@ -24,11 +24,12 @@ void process_data(FILE *input_file) {
 	while(!feof(input_file)){
 		// get the line of code 
 		fgets(string, 100, input_file);
+		// read each line
 		if (fgets(string,100, input_file)){
 			printf("%s\n", string);
 		}
 	}
-	// loop through the file
+	fclose();
 
 
 
