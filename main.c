@@ -21,15 +21,24 @@ void process_data(FILE *input_file) {
     // the fgets() C library function.  close it with the fclose()
     // built-in function
 	char string[100];
+	struct node *head = NULL;
 	while(!feof(input_file)){
 		// get the line of code 
 		fgets(string, 100, input_file);
 		// read each line
 		if (fgets(string,100, input_file)){
+			tokenify(string, &head);
 			printf("%s\n", string);
 		}
 	}
 	fclose();
+	// print out the sorted linked list
+	printf("*** List Contents Begin ***");
+	print_list(&head);
+	printf("*** List Contents End ***");
+	// free the memory
+	free_mem(&head);
+	
 
 
 

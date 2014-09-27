@@ -38,10 +38,9 @@ int prefix(const char *pre, const char *string){
 
 
 
-struct node** tokenify(const char *s) {
+struct node **tokenify(const char *s, struct node **head) {
 	char *s_copy = strdup(s); // make a copy of the string 
     char *token = strtok(s_copy, " \t\n"); // get tokens from the string
-    struct node *head = NULL; // head of the list
     while (token != NULL){
     	// check if the line has a "#" if it does ignore the rest of the line
     	if (prefix("#", token)){
@@ -97,9 +96,10 @@ void insert_node (const int n, struct node **head){
 =======
 
 void print_list (struct node **head){
-	while (head != NULL){
-		printf ("%d\n", head->value);
-		head = head->next;
+	struct node* temp = *head
+	while (temp != NULL){
+		printf ("%d\n", temp->value);
+		temp = temp->next;
 	}
 }
 
