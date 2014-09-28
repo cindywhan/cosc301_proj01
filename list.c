@@ -32,7 +32,7 @@ int is_int(const char *s){
 	if (s[0] == '-'){
 		i = 1;
 	}
-	for (i; i < strlen(s); i++){
+	for (; i < strlen(s); i++){
 		if (!isdigit(s[i])){
 		// if the number is not an int return -1
 		 	return -1;

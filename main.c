@@ -30,17 +30,12 @@ void process_data(FILE *input_file) {
 		tokenify(string, &head);
 
 	}
-	fclose(input_file);
 	// print out the sorted linked list
 	printf("*** List Contents Begin ***\n");
 	print_list(&head);
 	printf("*** List Contents End ***\n");
 	// free the memory
 	free_mem(&head);
-	
-
-
-
 }
 
 
