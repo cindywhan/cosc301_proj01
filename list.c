@@ -26,21 +26,39 @@ int prefix(const char *pre, const char *string){
 
 }	
 
+int is_int(const char *s){
+	// checks if the input is an integer
+	int i = 0;
+	if (s[0] == '-'){
+		i = 1;
+	}
+	for (i; i < strlen(s); i++){
+		if (!isdigit(s[i])){
+		// if the number is not an int return -1
+		 	return -1;
+		}
+	
+	}
+	return 1;
+}
 
 
 struct node **tokenify(const char *s, struct node **head) {
 	char *s_copy = strdup(s); // make a copy of the string 
     char *token = strtok(s_copy, " \t\n"); // get tokens from the string
     while (token != NULL){
+    
     	// check if the line has a "#" if it does ignore the rest of the line
-    	if (prefix("#", token)){
+    	if (prefix("#", token) == 0){
     		break;
     	}
     	// check if the number is integer
-    	if (isdigit(token)){
+    	if (is_int(token) == 1){
     	// add the int to the list
     		insert_node(atoi(token), head);
     	}
+    	token = strtok(NULL, " \t\n");
+    	
     }
     return head;
 }
@@ -67,29 +85,25 @@ void insert_node (const int n, struct node **head){
 		}
 		//if the value of the new node is smaller than the value of the head node
 		else{
-			new->next = head;
+			new->next = *head;
 			*head = new;
 		}
 	}
 	//else, if there are more than two nodes already in the linked list
 	else{
 		//use copy of the head instead of the real head node
-		while (copy->next != NULL){
-			//if the value of the new node is smaller than the value of the head node
-			if (n < copy->value){
-				new->next = copy;
-				copy = new;
-				break;
-			}
-			//if the value of the new node is larger than or equal to the value of the current head but smaller than or equal to the value of the next node after the head
-			else if (n >= copy->value && n <= copy->next->value){
+		while (copy->next!= NULL){
+			//if the value of the new node is smaller than the value of the current node
+			if (n >= copy->value && n < copy->next->value){
 				new->next = copy->next;
 				copy->next = new;
 				break;
 			}
+		
 			//keep going through the linked list until the new node satisfies either the if or else if statement
 			copy = copy->next;
 		}
+		copy->next = new;
 		
 	}
 }

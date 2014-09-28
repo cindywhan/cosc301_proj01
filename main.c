@@ -20,22 +20,21 @@ void process_data(FILE *input_file) {
     // is an already-open file.  you can read data from it using
     // the fgets() C library function.  close it with the fclose()
     // built-in function
+
 	char string[100];
 	struct node *head = NULL;
 	while(!feof(input_file)){
 		// get the line of code 
 		fgets(string, 100, input_file);
 		// read each line
-		if (fgets(string,100, input_file)){
-			tokenify(string, &head);
-			printf("%s\n", string);
-		}
+		tokenify(string, &head);
+
 	}
 	fclose(input_file);
 	// print out the sorted linked list
-	printf("*** List Contents Begin ***");
+	printf("*** List Contents Begin ***\n");
 	print_list(&head);
-	printf("*** List Contents End ***");
+	printf("*** List Contents End ***\n");
 	// free the memory
 	free_mem(&head);
 	
@@ -53,7 +52,6 @@ void usage(char *program) {
 #ifndef AUTOTEST
 int main(int argc, char **argv) {
     FILE *datafile = NULL;
-
     /* find out how we got invoked and deal with it */
     switch (argc) {
         case 1:
@@ -81,6 +79,8 @@ int main(int argc, char **argv) {
      * you should be able to just read from datafile regardless 
      * whether it's stdin or a "real" file.
      */
+     
+
     process_data(datafile);
     fclose(datafile);
     return 0;
