@@ -104,6 +104,7 @@ void insert_node (const int n, struct node **head){
 			//keep going through the linked list until the new node satisfies either the if or else if statement
 			copy = copy->next;
 		}
+		//if the value of the new node is the largest and needs to be added to the end of the linked list
 		copy->next = new;
 		
 	}
