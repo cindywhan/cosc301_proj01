@@ -6,16 +6,15 @@
 // Names: Cindy Han & Jung Hyun (Catherine) Seo
 
 /* your list function definitions */
-<<<<<<< HEAD
+
 
 struct node {
 	int value;
 	struct node *next;
-}
+};
 
 /* your list function definitions */
-=======
->>>>>>> d54a865467c4728b40860c879f6548d00b02e639
+
 
 
 

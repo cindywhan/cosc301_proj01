@@ -31,7 +31,7 @@ void process_data(FILE *input_file) {
 			printf("%s\n", string);
 		}
 	}
-	fclose();
+	fclose(input_file);
 	// print out the sorted linked list
 	printf("*** List Contents Begin ***");
 	print_list(&head);
