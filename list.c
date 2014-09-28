@@ -60,29 +60,29 @@ void insert_node (const int n, struct node **head){
 		*head = new;
 	}
 	//else if there is only one node in the linked list
-	else if (head->next == NULL){
+	else if ((*head)->next == NULL){
 		//if the value of the new node is larger than the value of the head node
-		if (head->value < n){
-			head->next = new;
+		if ((*head)->value < n){
+			(*head)->next = new;
 		}
 		//if the value of the new node is smaller than the value of the head node
 		else{
-			(*new)->next = head;
+			new->next = head;
 			*head = new;
 		}
 	}
 	//else, if there are more than two nodes already in the linked list
 	else{
 		//use copy of the head instead of the real head node
-		while ((*copy)->next != NULL){
+		while (copy->next != NULL){
 			//if the value of the new node is smaller than the value of the head node
-			if (n < (*copy)->value){
-				(*new)->next = copy;
-				*copy = new;
+			if (n < copy->value){
+				new->next = copy;
+				copy = new;
 				break;
 			}
 			//if the value of the new node is larger than or equal to the value of the current head but smaller than or equal to the value of the next node after the head
-			else if (n >= (*copy)->value && n <= (*copy)->next->value){
+			else if (n >= copy->value && n <= copy->next->value){
 				new->next = copy->next;
 				copy->next = new;
 				break;
@@ -97,7 +97,7 @@ void insert_node (const int n, struct node **head){
 
 //function to print the linked list
 void print_list (struct node **head){
-	struct node* temp = *head
+	struct node* temp = *head;
 	while (temp != NULL){
 		printf ("%d\n", temp->value);
 		temp = temp->next;
