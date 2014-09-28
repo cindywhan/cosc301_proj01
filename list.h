@@ -6,6 +6,7 @@
 struct node {
 	int value;
 	struct node *next;
+	
 };
 
 /* your function declarations associated with the list */
