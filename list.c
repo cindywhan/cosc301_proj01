@@ -13,7 +13,6 @@ struct node {
 	struct node *next;
 };
 
-/* your list function definitions */
 
 
 
@@ -103,8 +102,7 @@ void insert_node (const int n, struct node **head){
 		
 	}
 }
-<<<<<<< HEAD
-=======
+
 
 //function to print the linked list
 void print_list (struct node **head){
@@ -114,9 +112,4 @@ void print_list (struct node **head){
 		temp = temp->next;
 	}
 }
-<<<<<<< HEAD
-=======
 
-
->>>>>>> d54a865467c4728b40860c879f6548d00b02e639
->>>>>>> 8255b6117eb2d80b7887ab13118647257afaa23d
