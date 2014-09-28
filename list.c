@@ -60,6 +60,7 @@ struct node **tokenify(const char *s, struct node **head) {
     	token = strtok(NULL, " \t\n");
     	
     }
+    free(s_copy);
     return head;
 }
 
