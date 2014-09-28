@@ -1,6 +1,6 @@
 /*
  * Project 1
- * Cindy Han & Jung Hyun (Cathrine) Seo
+ * Cindy Han & Jung Hyun (Catherine) Seo
  * Fall 2014
  * COSC 301
  */
@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
+#include <sys/resource.h>
 
 #include "list.h"
 
@@ -34,6 +35,22 @@ void process_data(FILE *input_file) {
 	printf("*** List Contents Begin ***\n");
 	print_list(&head);
 	printf("*** List Contents End ***\n");
+	
+	//print amount of time program spent executing in both user space and OS kernel
+	struct rusage usage; 
+	
+	int ru = getrusage (RUSAGE_SELF, &usage);
+	struct timeval u = usage.ru_stime;
+	struct timeval sys = usage.ru_utime;
+	
+	if (ru == 0){
+		printf ("User time: %ld \n", u.tv_usec);
+		printf ("System time: %ld \n", sys.tv_usec);
+	}
+	else{
+		printf ("Error\n");
+	}
+	
 	// free the memory
 	free_mem(&head);
 }
