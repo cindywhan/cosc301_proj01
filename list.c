@@ -1,26 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
-
+#include <string.h>
+#include <ctype.h>
 
 // Names: Cindy Han & Jung Hyun (Catherine) Seo
 
 /* your list function definitions */
 
 
-struct node {
-	int value;
-	struct node *next;
-};
-
-
-
-
-
-
 void free_mem(struct node** head){
 	// free all the malloced memory 
-	struct node current = *head;
+	struct node *current = *head;
 	while (current != NULL){
 		struct node* temp = current;
 		current = current->next;
@@ -31,7 +22,7 @@ void free_mem(struct node** head){
 
 int prefix(const char *pre, const char *string){
 	// checks if the input starts the prefix given
-	return (strncmp(pre, str, strlen(pre)));
+	return (strncmp(pre, string, strlen(pre)));
 
 }	
 
@@ -48,10 +39,10 @@ struct node **tokenify(const char *s, struct node **head) {
     	// check if the number is integer
     	if (isdigit(token)){
     	// add the int to the list
-    		insert_node(atoi(token), &head);
+    		insert_node(atoi(token), head);
     	}
     }
-    return *head;
+    return head;
 }
 
 
@@ -59,7 +50,7 @@ struct node **tokenify(const char *s, struct node **head) {
 void insert_node (const int n, struct node **head){
 	//create a new node with the given int
 	struct node *new = malloc(sizeof(struct node));
-	new->value = n
+	new->value = n;
 	new->next = NULL;
 	//make a copy of the head node
 	struct node *copy = *head;
@@ -69,10 +60,10 @@ void insert_node (const int n, struct node **head){
 		*head = new;
 	}
 	//else if there is only one node in the linked list
-	else if ((*head)->next == NULL){
+	else if (head->next == NULL){
 		//if the value of the new node is larger than the value of the head node
-		if ((*head)->value < n){
-			(*head)->next = new;
+		if (head->value < n){
+			head->next = new;
 		}
 		//if the value of the new node is smaller than the value of the head node
 		else{
