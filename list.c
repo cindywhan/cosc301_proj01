@@ -6,6 +6,56 @@
 // Names: Cindy Han & Jung Hyun (Catherine) Seo
 
 /* your list function definitions */
+<<<<<<< HEAD
+
+struct node {
+	int value;
+	struct node *next;
+}
+
+/* your list function definitions */
+=======
+>>>>>>> d54a865467c4728b40860c879f6548d00b02e639
+
+
+
+
+void free_mem(struct node** head){
+	// free all the malloced memory 
+	struct node current = *head;
+	while (current != NULL){
+		struct node* temp = current;
+		current = current->next;
+		free(temp);
+	}
+
+}
+
+int prefix(const char *pre, const char *string){
+	// checks if the input starts the prefix given
+	return (strncmp(pre, str, strlen(pre)));
+
+}	
+
+
+
+struct node **tokenify(const char *s, struct node **head) {
+	char *s_copy = strdup(s); // make a copy of the string 
+    char *token = strtok(s_copy, " \t\n"); // get tokens from the string
+    while (token != NULL){
+    	// check if the line has a "#" if it does ignore the rest of the line
+    	if (prefix("#", token)){
+    		break;
+    	}
+    	// check if the number is integer
+    	if (isdigit(token)){
+    	// add the int to the list
+    		insert_node(atoi(token), &head);
+    	}
+    }
+    return *head;
+}
+
 
 //function to insert a node into a linked list whilst sorting it
 void insert_node (const int n, struct node **head){
@@ -54,11 +104,20 @@ void insert_node (const int n, struct node **head){
 		
 	}
 }
+<<<<<<< HEAD
+=======
 
 //function to print the linked list
 void print_list (struct node **head){
-	while (head != NULL){
-		printf ("%d\n", head->value);
-		head = head->next;
+	struct node* temp = *head
+	while (temp != NULL){
+		printf ("%d\n", temp->value);
+		temp = temp->next;
 	}
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> d54a865467c4728b40860c879f6548d00b02e639
+>>>>>>> 8255b6117eb2d80b7887ab13118647257afaa23d
